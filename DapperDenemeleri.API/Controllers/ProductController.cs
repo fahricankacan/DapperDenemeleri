@@ -32,6 +32,7 @@ namespace DapperDenemeleri.API.Controllers
         public async Task<IActionResult> Add(Product product)
         {
             var data = await unitOfWork.Products.AddAsync(product);
+            unitOfWork.DbTransaction.Commit();
             return Ok(data);
         }
         [HttpDelete]
